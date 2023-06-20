@@ -6,6 +6,7 @@ import * as Yup from 'yup'
 
 import LoginImg from '../../assets/login-image.svg'
 import Logo from '../../assets/logo.svg'
+import Button from '../../components/Button'
 import api from '../../services/api'
 import {
   Container,
@@ -13,7 +14,6 @@ import {
   ContainerItens,
   Label,
   Input,
-  Button,
   SignInLink,
   ErrorMessage
 } from './styles'
@@ -69,7 +69,9 @@ function Login() {
           />
           <ErrorMessage>{errors.password?.message}</ErrorMessage>
 
-          <Button type="submit">Entrar</Button>
+          <Button type="submit" style={{ marginTop: 25, marginBottom: 25 }}>
+            Entrar
+          </Button>
         </form>
         <SignInLink>
           Não possui conta ? <a>Cadastre-se</a>
