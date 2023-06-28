@@ -3,6 +3,7 @@ import { Routes as Switch, Route, BrowserRouter } from 'react-router-dom'
 
 import Home from '../containers/Home'
 import Login from '../containers/Login'
+import Products from '../containers/Products'
 import Register from '../containers/Register'
 import PrivateRoute from './private-routes'
 
@@ -17,6 +18,14 @@ function Routes() {
           element={
             <PrivateRoute redirectTo="/login">
               <Home />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/produtos"
+          element={
+            <PrivateRoute redirectTo="/login">
+              <Products />
             </PrivateRoute>
           }
         />
