@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
-export const Container = styled.div``
+export const Container = styled.div`
+  background-color: #efefef;
+`
 
 export const ProductsImg = styled.img`
   width: 100%;
@@ -21,4 +23,13 @@ export const CategoryButton = styled.button`
   color: ${props => (props.isActiveCategory ? '#9758A6' : '#9a9a9d')};
   font-size: 17px;
   padding: 5px;
+`
+
+export const ContainerProducts = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 40px;
+  justify-items: center;
+  margin-top: 20px;
 `
