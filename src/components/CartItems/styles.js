@@ -37,6 +37,23 @@ export const Body = styled.div`
     color: #000;
     font-weight: 400;
   }
+
+  .quantity-container {
+    display: flex;
+    gap: 20px;
+
+    button {
+      height: 30px;
+      background: transparent;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    p {
+      margin-top: 5px;
+    }
+  }
 `
 
 export const EmptyCart = styled.div`
