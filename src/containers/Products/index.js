@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 
 import ProductLogo from '../../assets/product-logo.svg'
 import { CardProduct } from '../../components'
@@ -7,8 +8,8 @@ import formatCurrency from '../../utils/formatCurrency'
 import {
   Container,
   ProductsImg,
-  CategoryButton,
   CategoryMenu,
+  CategoryButton,
   ContainerProducts
 } from './styles'
 
@@ -18,26 +19,38 @@ export function Products() {
   const [filteredProducts, setFilteredProducts] = useState([])
   const [activeCategory, setActiveCategory] = useState(0)
 
+  const { state } = useLocation()
+
+  let categoryId = 0
+  if (state?.categoryId) {
+    categoryId = state.categoryId
+  }
+
+  useEffect(() => {
+    if (categoryId) {
+      setActiveCategory(categoryId)
+    }
+  }, [categoryId])
+
   useEffect(() => {
     async function loadCategories() {
       const { data } = await api.get('categories')
-      const newCategories = [{ id: 0, name: 'Todas' }, ...data]
 
+      const newCategories = [{ id: 0, name: 'Todas' }, ...data]
       setCategories(newCategories)
     }
 
     async function loadProducts() {
-      const { data: allproducts } = await api.get('products')
+      const { data: allProducts } = await api.get('products')
 
-      const newProducts = allproducts.map(product => {
+      const newProducts = allProducts.map(product => {
         return { ...product, formatedPrice: formatCurrency(product.price) }
       })
 
       setProducts(newProducts)
     }
-
-    loadCategories()
     loadProducts()
+    loadCategories()
   }, [])
 
   useEffect(() => {
@@ -45,15 +58,15 @@ export function Products() {
       setFilteredProducts(products)
     } else {
       const newFilteredProducts = products.filter(
-        products => products.category_id === activeCategory
+        product => product.category_id === activeCategory
       )
-
       setFilteredProducts(newFilteredProducts)
     }
   }, [activeCategory, products])
+
   return (
     <Container>
-      <ProductsImg src={ProductLogo} alt="logo da home" />
+      <ProductsImg src={ProductLogo} alt="logo de produtos" />
       <CategoryMenu>
         {categories &&
           categories.map(category => (
