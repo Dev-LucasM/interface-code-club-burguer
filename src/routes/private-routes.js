@@ -8,9 +8,13 @@ import { Header } from '../components/Header'
 function PrivateRoute({ children, redirectTo }) {
   const user = localStorage.getItem('codeburguer:userData')
 
+  if (children.props.isAdmin && !JSON.parse(user).admin) {
+    return <Navigate to="/" />
+  }
+
   return (
     <>
-      <Header />
+      {!children.props.isAdmin && <Header />}
       {user ? children : <Navigate to={redirectTo} />}
     </>
   )
