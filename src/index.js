@@ -14,6 +14,5 @@ root.render(
     </AppProvider>
     <ToastContainer autoClose={2000} theme="light" />
     <GlobalStyles />
-  </>,
-  document.getElementById('root')
+  </>
 )
