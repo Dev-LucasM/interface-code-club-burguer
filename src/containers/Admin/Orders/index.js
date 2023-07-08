@@ -42,8 +42,6 @@ function Orders() {
     setRows(newRows)
   }, [orders])
 
-  console.log(rows)
-
   return (
     <Container>
       <TableContainer component={Paper}>
