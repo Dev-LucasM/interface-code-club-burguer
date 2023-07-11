@@ -9,6 +9,7 @@ import { Container, ContainerItems, ListLink } from './styles'
 
 export function SideMenuAdmin({ pathname }) {
   const { logout } = useUser()
+
   return (
     <Container>
       <hr />
