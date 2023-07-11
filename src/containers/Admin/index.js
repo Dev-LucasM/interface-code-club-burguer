@@ -11,7 +11,7 @@ export function Admin() {
   const { pathname } = useLocation()
   return (
     <Container>
-      <SideMenuAdmin />
+      <SideMenuAdmin pathname={pathname} />
       <ContainerItems>
         {pathname === paths.Order && <Orders />}
         {pathname === paths.Products && <ListProducts />}
