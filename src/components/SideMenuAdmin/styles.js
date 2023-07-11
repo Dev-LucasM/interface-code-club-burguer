@@ -20,7 +20,7 @@ export const ContainerItems = styled.div`
   display: flex;
   align-items: center;
   border-radius: 2px;
-  background-color: #565656;
+  background-color: ${props => (props.isActive ? '#565656' : 'none')};
   margin: 8px;
   padding-left: 20px;
 
