@@ -10,6 +10,7 @@ function Routes() {
       <Switch>
         <Route path="/login" element={<Login />} />
         <Route path="/cadastro" element={<Register />} />
+
         <Route
           path="/"
           element={
@@ -34,9 +35,16 @@ function Routes() {
             </PrivateRoute>
           }
         />
-
         <Route
           path="/pedidos"
+          element={
+            <PrivateRoute redirectTo="/login">
+              <Admin isAdmin />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/listar-produtos"
           element={
             <PrivateRoute redirectTo="/login">
               <Admin isAdmin />
