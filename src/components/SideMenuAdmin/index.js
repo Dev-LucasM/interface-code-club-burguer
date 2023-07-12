@@ -1,4 +1,5 @@
 import React from 'react'
+import { useLocation } from 'react-router-dom'
 
 import LogoutIcon from '@mui/icons-material/Logout'
 import PropTypes from 'prop-types'
@@ -7,9 +8,9 @@ import { useUser } from '../../hooks/UserContext'
 import listLinks from './menu-list'
 import { Container, ContainerItems, ListLink } from './styles'
 
-export function SideMenuAdmin({ pathname }) {
+export function SideMenuAdmin() {
+  const { pathname } = useLocation()
   const { logout } = useUser()
-
   return (
     <Container>
       <hr />
@@ -28,8 +29,4 @@ export function SideMenuAdmin({ pathname }) {
       </ContainerItems>
     </Container>
   )
-}
-
-SideMenuAdmin.propTypes = {
-  pathname: PropTypes.string
 }
