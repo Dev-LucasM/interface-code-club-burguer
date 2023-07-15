@@ -20,9 +20,13 @@ export const ContainerItems = styled.div`
   display: flex;
   align-items: center;
   border-radius: 2px;
-  background-color: ${props => (props.isActive ? '#565656' : 'none')};
+  background-color: none;
   margin: 8px;
   padding-left: 20px;
+
+  &.active {
+    background-color: #565656;
+  }
 
   .icon {
     color: #fff;

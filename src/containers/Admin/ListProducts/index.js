@@ -29,9 +29,9 @@ function ListProducts() {
 
   function isOffer(offerStatus) {
     if (offerStatus) {
-      return <CancelIcon style={{ color: '#CC1717' }} />
+      return <CancelIcon style={{ color: '#228B22' }} />
     }
-    return <CheckBoxIcon style={{ color: '#228B22' }} />
+    return <CheckBoxIcon style={{ color: '#CC1717' }} />
   }
 
   return (

@@ -30,8 +30,12 @@ export const Menu = styled.div`
 export const LinkMenu = styled.a`
   color: #323d5d;
   cursor: pointer;
-  font-weight: ${props => (props.isActiveStatus ? 700 : 400)};
-  border-bottom: ${props =>
-    props.isActiveStatus ? '2px solid #9758A6' : 'none'};
+  font-weight: 400;
+  border-bottom: none;
   padding: 5px;
+
+  &.active {
+    font-weight: 700;
+    border-bottom: 2px solid #9758a6;
+  }
 `

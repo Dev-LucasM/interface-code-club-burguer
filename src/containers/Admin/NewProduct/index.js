@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useForm, Controller } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 import ReactSelect from 'react-select'
+import { toast } from 'react-toastify'
 
 import { yupResolver } from '@hookform/resolvers/yup'
 import CloudUploadIcon from '@mui/icons-material/CloudUpload'
@@ -13,6 +15,7 @@ import { Container, Label, LabelUpload, Input, ButtonStyles } from './styles'
 function NewProduct() {
   const [fileName, setFileName] = useState(null)
   const [categories, setCategories] = useState([])
+  const navigate = useNavigate()
 
   const schema = Yup.object().shape({
     name: Yup.string().required('Digite o nome do produto'),
@@ -39,7 +42,24 @@ function NewProduct() {
     resolver: yupResolver(schema)
   })
 
-  const onSubmit = data => console.log(data)
+  const onSubmit = async data => {
+    const productDataFormData = new FormData()
+
+    productDataFormData.append('name', data.name)
+    productDataFormData.append('price', data.price)
+    productDataFormData.append('category_id', data.category.id)
+    productDataFormData.append('file', data.file[0])
+
+    await toast.promise(api.post('products', productDataFormData), {
+      pending: 'Criando novo produto...',
+      success: 'Produto criado com sucesso',
+      error: 'Falha ao criar o produto'
+    })
+
+    setTimeout(() => {
+      navigate('/listar-produtos')
+    }, 2000)
+  }
 
   useEffect(() => {
     async function loadCategories() {
@@ -49,8 +69,6 @@ function NewProduct() {
 
     loadCategories()
   }, [])
-
-  console.log(fileName)
 
   return (
     <Container>

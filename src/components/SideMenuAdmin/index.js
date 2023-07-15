@@ -2,7 +2,6 @@ import React from 'react'
 import { useLocation } from 'react-router-dom'
 
 import LogoutIcon from '@mui/icons-material/Logout'
-import PropTypes from 'prop-types'
 
 import { useUser } from '../../hooks/UserContext'
 import listLinks from './menu-list'
@@ -15,13 +14,16 @@ export function SideMenuAdmin() {
     <Container>
       <hr />
       {listLinks.map(item => (
-        <ContainerItems key={item.id} isActive={pathname === item.link}>
+        <ContainerItems
+          key={item.id}
+          className={pathname === item.link ? 'active' : ''}
+        >
           <item.icon className="icon" />
           <ListLink to={item.link}>{item.label}</ListLink>
         </ContainerItems>
       ))}
       <hr />
-      <ContainerItems style={{ position: 'absolute', bottom: '30px' }}>
+      <ContainerItems style={{ position: 'fixed', bottom: '30px' }}>
         <LogoutIcon className="icon" />
         <ListLink to="/login" onClick={logout}>
           Sair
