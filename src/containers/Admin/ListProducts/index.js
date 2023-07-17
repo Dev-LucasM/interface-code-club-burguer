@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import CancelIcon from '@mui/icons-material/Cancel'
 import CheckBoxIcon from '@mui/icons-material/CheckBox'
@@ -10,12 +11,14 @@ import TableContainer from '@mui/material/TableContainer'
 import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
 
+import paths from '../../../constants/paths'
 import api from '../../../services/api'
 import formatCurrency from '../../../utils/formatCurrency'
 import { Container, Image, EditIconStyles } from './styles'
 
 function ListProducts() {
   const [products, setProducts] = useState()
+  const navigate = useNavigate()
 
   useEffect(() => {
     async function loadOrders() {
@@ -32,6 +35,10 @@ function ListProducts() {
       return <CancelIcon style={{ color: '#228B22' }} />
     }
     return <CheckBoxIcon style={{ color: '#CC1717' }} />
+  }
+
+  function editProduct(product) {
+    navigate(paths.EditProduct, { state: { product } })
   }
 
   return (
@@ -63,7 +70,7 @@ function ListProducts() {
                     <Image src={product.url} alt="imagem-do-produto" />
                   </TableCell>
                   <TableCell>
-                    <EditIconStyles />
+                    <EditIconStyles onClick={() => editProduct(product)} />
                   </TableCell>
                 </TableRow>
               ))}

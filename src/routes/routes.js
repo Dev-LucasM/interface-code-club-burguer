@@ -60,6 +60,14 @@ function Routes() {
             </PrivateRoute>
           }
         />
+        <Route
+          path={paths.EditProduct}
+          element={
+            <PrivateRoute redirectTo="/login">
+              <Admin isAdmin />
+            </PrivateRoute>
+          }
+        />
       </Switch>
     </BrowserRouter>
   )
