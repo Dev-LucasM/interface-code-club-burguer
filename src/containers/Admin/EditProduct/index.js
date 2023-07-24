@@ -29,8 +29,6 @@ function EditProduct() {
     state: { product }
   } = useLocation()
 
-  console.log(product)
-
   const schema = Yup.object().shape({
     name: Yup.string().required('Digite o nome do produto'),
     price: Yup.string().required('Digite o preço do produto'),
