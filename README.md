@@ -1,5 +1,7 @@
 <h1 align="center">Code Burger 🍔</h1>
 
+![Gif do Teste](./src/assets/Gif.gif)
+
 > O sistema é uma simulação de uma hamburgueria real. Inclui sistema de login, registro, exibição de produtos e categorias, sistema de carrinho e tela de administrador para a criação de novos produtos
 
 Confira a aplicação: https://interface-code-club-burguer.vercel.app
