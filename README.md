@@ -1,4 +1,4 @@
-<h1 align="center">Code Burger 🍔</h1>
+<h1 align="center">Code Burguer 🍔</h1>
 
 ![Gif do Teste](./src/assets/Gif.gif)
 
